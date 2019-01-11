@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * YouTube Live Embed plugin for Craft CMS 3.x
+ *
+ * YouTube Live Embed Settings.twig
+ *
+ * @author    nystudio107
+ * @copyright Copyright (c) 2019 nystudio107
+ * @link      https://nystudio107.com
+ * @package   YoutubeLiveEmbed
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'YouTube Channel ID',
+    instructions: 'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).',
+    id: 'youtubeChannelId',
+    name: 'youtubeChannelId',
+    value: settings['youtubeChannelId']})
+}}
