@@ -16,8 +16,8 @@
 {% import "_includes/forms" as forms %}
 
 {{ forms.textField({
-    label: 'YouTube Channel ID',
-    instructions: 'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).',
+    label: 'YouTube Channel ID'|t('youtubeliveembed'),
+    instructions: 'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).'|t('youtubeliveembed'),
     id: 'youtubeChannelId',
     name: 'youtubeChannelId',
     value: settings['youtubeChannelId']})
