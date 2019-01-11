@@ -12,8 +12,6 @@ namespace nystudio107\youtubeliveembed\variables;
 
 use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
 
-use Craft;
-
 /**
  * @author    nystudio107
  * @package   YoutubeLiveEmbed
@@ -28,9 +26,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return string
+     * @return \Twig_Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): string
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedStream($aspectRatioX, $aspectRatioY);
     }
@@ -39,9 +37,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return string
+     * @return \Twig_Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): string
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedChat($aspectRatioX, $aspectRatioY);
     }

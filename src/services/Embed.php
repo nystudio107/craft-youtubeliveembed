@@ -10,12 +10,12 @@
 
 namespace nystudio107\youtubeliveembed\services;
 
-use craft\helpers\UrlHelper;
 use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
 use nystudio107\youtubeliveembed\helpers\PluginTemplate;
 
 use Craft;
 use craft\base\Component;
+use craft\helpers\UrlHelper;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 
@@ -39,9 +39,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return string
+     * @return \Twig_Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): string
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream.twig',
@@ -58,9 +58,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return string
+     * @return \Twig_Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): string
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat.twig',
@@ -81,11 +81,11 @@ class Embed extends Component
      */
     protected function getYoutubeStreamUrl(): string
     {
-        $html =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
+        $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
             'channel' => YoutubeLiveEmbed::$plugin->getSettings()->youtubeChannelId,
         ]);
 
-        return $html;
+        return $url;
     }
 
     /**
@@ -93,18 +93,18 @@ class Embed extends Component
      */
     protected function getYoutubeChatUrl(): string
     {
-        $html = '';
+        $url = '';
         $videoId = $this->getVideoIdFromLiveStream();
         if ($videoId) {
             $site = Craft::$app->getSites()->currentSite;
             $domain = parse_url($site->baseUrl, PHP_URL_HOST);
-            $html = UrlHelper::urlWithParams(self::YOUTUBE_CHAT_URL, [
+            $url = UrlHelper::urlWithParams(self::YOUTUBE_CHAT_URL, [
                 'v' => $this->getVideoIdFromLiveStream(),
                 'embed_domain' => $domain
             ]);
         }
 
-        return $html;
+        return $url;
     }
 
     /**

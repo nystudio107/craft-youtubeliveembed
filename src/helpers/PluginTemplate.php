@@ -10,8 +10,6 @@
 
 namespace nystudio107\youtubeliveembed\helpers;
 
-use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
-
 use Craft;
 use craft\helpers\Template;
 use craft\web\View;
@@ -49,9 +47,9 @@ class PluginTemplate
      * @param $templatePath
      * @param $params
      *
-     * @return string
+     * @return \Twig_Markup
      */
-    public static function renderPluginTemplate(string $templatePath, array $params = []): string
+    public static function renderPluginTemplate(string $templatePath, array $params = []): \Twig_Markup
     {
         // Stash the old template mode, and set it Control Panel template mode
         $oldMode = Craft::$app->view->getTemplateMode();
