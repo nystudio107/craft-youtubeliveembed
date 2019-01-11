@@ -10,9 +10,6 @@
 
 namespace nystudio107\youtubeliveembed\models;
 
-use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
-
-use Craft;
 use craft\base\Model;
 
 /**
