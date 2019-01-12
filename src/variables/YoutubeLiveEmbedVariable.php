@@ -23,6 +23,8 @@ class YoutubeLiveEmbedVariable
     // =========================================================================
 
     /**
+     * Renders the responsive iframe for the live stream video
+     *
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
@@ -34,6 +36,8 @@ class YoutubeLiveEmbedVariable
     }
 
     /**
+     * Renders the responsive iframe HTML for the live stream chat
+     *
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
@@ -42,5 +46,39 @@ class YoutubeLiveEmbedVariable
     public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedChat($aspectRatioX, $aspectRatioY);
+    }
+
+    /**
+     * Sets the YouTube Channel ID to $channelId
+     *
+     * @param string $channelId
+     *
+     * @return string
+     */
+    public function setChannelId(string $channelId): string
+    {
+        YoutubeLiveEmbed::$plugin->embed->setChannelId($channelId);
+
+        return '';
+    }
+
+    /**
+     * Returns whether the stream is currently live
+     *
+     * @return bool
+     */
+    public function isLive(): bool
+    {
+        return YoutubeLiveEmbed::$plugin->embed->isLive();
+    }
+
+    /**
+     * Returns the number of people currently viewing the live stream
+     *
+     * @return int
+     */
+    public function liveViewers(): int
+    {
+        return YoutubeLiveEmbed::$plugin->embed->liveViewers();
     }
 }

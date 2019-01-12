@@ -31,11 +31,14 @@ class Embed extends Component
 
     const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
     const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
+    const YOUTUBE_LIVE_STATS_URL = 'https://www.youtube.com/live_stats';
 
     // Public Methods
     // =========================================================================
 
     /**
+     * Renders the responsive iframe for the live stream video
+     *
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
@@ -55,6 +58,8 @@ class Embed extends Component
     }
 
     /**
+     * Renders the responsive iframe HTML for the live stream chat
+     *
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
@@ -73,22 +78,68 @@ class Embed extends Component
         return $html;
     }
 
+    /**
+     * Sets the YouTube Channel ID to $channelId
+     *
+     * @param string $channelId
+     */
+    public function setChannelId(string $channelId)
+    {
+        YoutubeLiveEmbed::$youtubeChannelId = $channelId;
+    }
+
+    /**
+     * Returns whether the stream is currently live
+     *
+     * @return bool
+     */
+    public function isLive(): bool
+    {
+        return (bool)$this->liveViewers();
+    }
+
+    /**
+     * Returns the number of people currently viewing the live stream
+     *
+     * @return int
+     */
+    public function liveViewers(): int
+    {
+        $count = 0;
+        $videoId = $this->getVideoIdFromLiveStream();
+        if ($videoId) {
+            $liveUrl = UrlHelper::urlWithParams(self::YOUTUBE_LIVE_STATS_URL, [
+                'v' => $this->getVideoIdFromLiveStream(),
+            ]);
+            // Fetch the livestream page
+            if ($data = @file_get_contents($liveUrl)) {
+                $count = (int)$data;
+            }
+        }
+
+        return $count;
+    }
+
     // Protected Methods
     // =========================================================================
 
     /**
+     * Returns the URL to the live video YouTube page
+     *
      * @return string
      */
     protected function getYoutubeStreamUrl(): string
     {
         $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
-            'channel' => YoutubeLiveEmbed::$plugin->getSettings()->youtubeChannelId,
+            'channel' => YoutubeLiveEmbed::$youtubeChannelId,
         ]);
 
         return $url;
     }
 
     /**
+     * Returns the URL to the live chat YouTube page
+     *
      * @return string
      */
     protected function getYoutubeChatUrl(): string
@@ -108,6 +159,8 @@ class Embed extends Component
     }
 
     /**
+     * Extracts the Video ID of the current live stream video
+     *
      * @return null|string
      */
     protected function getVideoIdFromLiveStream()
