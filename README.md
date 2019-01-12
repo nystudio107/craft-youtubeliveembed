@@ -46,6 +46,23 @@ You can also override this setting in the `config.php` or at runtime via Twig, s
 
 You can see an example of YouTube Live Embed being used live on at [nystudio107.com/live](https://nystudio107.com/live).
 
+In order to embed a YouTube Live Stream on a website, you need:
+1. Live Streaming is enabled
+2. Embedding of Live Streaming is enabled
+3. Monetization is enabled
+
+You can find these on the [YouTube Features](https://www.youtube.com/features) page, and read more about it in the [Enable embedded live streams from YouTube](http://docs.crowdcast.io/other/enable-embedded-live-streams-from-youtube)
+
+If you haven't satisfied the above requirements, when someone goes to play your live stream embedded on your website, they will see this message (you can test it with an Incognito browser):
+
+```
+Video unavailable
+Watch this video on YouTube.
+Playback on other websites has been disabled by the video owner.
+```
+
+N.B. That in order to enable Monetization, you must have a linked AdSense account. Just enabling monetization is enough, and ads must be enabled, but they will not appear in your videos unless you specifically enable them.
+
 ### Embedding a Live Stream Video
 
 To embed a live stream video, simply do:
