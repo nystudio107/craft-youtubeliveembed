@@ -53,7 +53,7 @@ This will embed a responsive `<iframe>` element with a fixed aspect ratio that g
 The default aspect ratio is **16:9** but you can also optionally change it via:
 
 ```twig
-    {{ craft.youtubelive.embedStream(ASPECT_RATIO_X, ASPECT_RATiO_Y) }}
+    {{ craft.youtubelive.embedStream(ASPECT_RATIO_X, ASPECT_RATIO_Y) }}
 ```
 
 ### Embedding a Live Stream Chat
@@ -69,7 +69,7 @@ This will embed a responsive `<iframe>` element with a fixed aspect ratio that g
 The default aspect ratio is **16:9** but you can also optionally change it via:
 
 ```twig
-    {{ craft.youtubelive.embedChat(ASPECT_RATIO_X, ASPECT_RATiO_Y) }}
+    {{ craft.youtubelive.embedChat(ASPECT_RATIO_X, ASPECT_RATIO_Y) }}
 ```
 
 ### Changing the Channel ID
