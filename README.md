@@ -44,6 +44,8 @@ You can also override this setting in the `config.php` or at runtime via Twig, s
 
 ## Using YouTube Live Embed
 
+You can see an example of YouTube Live Embed being used live on at [nystudio107.com/live](https://nystudio107.com/live).
+
 ### Embedding a Live Stream Video
 
 To embed a live stream video, simply do:
