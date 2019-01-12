@@ -56,6 +56,12 @@ The default aspect ratio is **16:9** but you can also optionally change it via:
     {{ craft.youtubelive.embedStream(ASPECT_RATIO_X, ASPECT_RATIO_Y) }}
 ```
 
+If you have a Google AMP page, you can use:
+
+```twig
+    {{ craft.youtubelive.embedStreamAmp() }}
+```
+
 ### Embedding a Live Stream Chat
 
 To embed a live stream chat, simply do:
@@ -70,6 +76,12 @@ The default aspect ratio is **16:9** but you can also optionally change it via:
 
 ```twig
     {{ craft.youtubelive.embedChat(ASPECT_RATIO_X, ASPECT_RATIO_Y) }}
+```
+
+If you have a Google AMP page, you can use:
+
+```twig
+    {{ craft.youtubelive.embedChatAmp() }}
 ```
 
 ### Changing the Channel ID

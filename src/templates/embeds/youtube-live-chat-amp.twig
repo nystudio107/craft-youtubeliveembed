@@ -1,0 +1,38 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * YouTube Live Embed plugin for Craft CMS 3.x
+ *
+ * YouTube Live Embed Settings.twig
+ *
+ * @author    nystudio107
+ * @copyright Copyright (c) 2019 nystudio107
+ * @link      https://nystudio107.com
+ * @package   YoutubeLiveEmbed
+ * @since     1.0.0
+ */
+#}
+<style>
+    .youtube-chat-resp-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: {{ aspectRatio }}%;
+    }
+    .youtube-chat-resp-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+</style>
+<div class="youtube-chat-resp-container">
+    <amp-iframe class="youtube-chat-resp-iframe"
+                width="800" height="450"
+                sandbox="allow-scripts allow-same-origin"
+                layout="responsive"
+                frameborder="0"
+                src="{{ iframeUrl }}">
+    </amp-iframe>
+</div>

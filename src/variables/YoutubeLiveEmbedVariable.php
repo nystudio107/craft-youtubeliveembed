@@ -36,6 +36,19 @@ class YoutubeLiveEmbedVariable
     }
 
     /**
+     * Renders the responsive Google AMP iframe for the live stream video
+     *
+     * @param int $aspectRatioX
+     * @param int $aspectRatioY
+     *
+     * @return \Twig_Markup
+     */
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    {
+        return YoutubeLiveEmbed::$plugin->embed->embedStreamAmp($aspectRatioX, $aspectRatioY);
+    }
+
+    /**
      * Renders the responsive iframe HTML for the live stream chat
      *
      * @param int $aspectRatioX
@@ -46,6 +59,19 @@ class YoutubeLiveEmbedVariable
     public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedChat($aspectRatioX, $aspectRatioY);
+    }
+
+    /**
+     * Renders the responsive Google AMP iframe HTML for the live stream chat
+     *
+     * @param int $aspectRatioX
+     * @param int $aspectRatioY
+     *
+     * @return \Twig_Markup
+     */
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    {
+        return YoutubeLiveEmbed::$plugin->embed->embedChatAmp($aspectRatioX, $aspectRatioY);
     }
 
     /**

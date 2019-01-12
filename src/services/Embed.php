@@ -58,6 +58,27 @@ class Embed extends Component
     }
 
     /**
+     * Renders the responsive Google AMP iframe for the live stream video
+     *
+     * @param int $aspectRatioX
+     * @param int $aspectRatioY
+     *
+     * @return \Twig_Markup
+     */
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    {
+        $html = PluginTemplate::renderPluginTemplate(
+            'embeds/youtube-live-stream-amp.twig',
+            [
+                'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
+                'iframeUrl' => $this->getYoutubeStreamUrl(),
+            ]
+        );
+
+        return $html;
+    }
+
+    /**
      * Renders the responsive iframe HTML for the live stream chat
      *
      * @param int $aspectRatioX
@@ -69,6 +90,27 @@ class Embed extends Component
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat.twig',
+            [
+                'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
+                'iframeUrl' => $this->getYoutubeChatUrl(),
+            ]
+        );
+
+        return $html;
+    }
+
+    /**
+     * Renders the responsive Google AMP iframe HTML for the live stream chat
+     *
+     * @param int $aspectRatioX
+     * @param int $aspectRatioY
+     *
+     * @return \Twig_Markup
+     */
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    {
+        $html = PluginTemplate::renderPluginTemplate(
+            'embeds/youtube-live-chat-amp.twig',
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
                 'iframeUrl' => $this->getYoutubeChatUrl(),
