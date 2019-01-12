@@ -41,6 +41,11 @@ class YoutubeLiveEmbed extends Plugin
      */
     public static $plugin;
 
+    /**
+     * @var string
+     */
+    public static $youtubeChannelId;
+
     // Public Properties
     // =========================================================================
 
@@ -59,6 +64,7 @@ class YoutubeLiveEmbed extends Plugin
     {
         parent::init();
         self::$plugin = $this;
+        self::$youtubeChannelId = $this->getSettings()->youtubeChannelId;
 
         Event::on(
             CraftVariable::class,
