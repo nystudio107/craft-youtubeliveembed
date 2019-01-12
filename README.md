@@ -32,6 +32,8 @@ You can also use it to determine whether a stream is currently live, and how man
 
 Both the live stream and the live stream chat are embedded as responsive `<iframe>` elements, that you can control the aspect ratio of should you so wish.
 
+![Screenshot](resources/screenshots/live-stream-example.png)
+
 ## Configuring YouTube Live Embed
 
 The only configuration is the **YouTube Channel ID** in the plugin settings. If you do not know your YouTube Channel ID, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).
