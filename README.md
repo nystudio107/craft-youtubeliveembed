@@ -8,7 +8,7 @@ This plugin allows you to embed a YouTube live stream and/or live chat on your w
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 ## Installation
 
@@ -128,12 +128,24 @@ To determine if the YouTube Video Stream is live, you can do:
     {% endif %}
 ```
 
+You can also ping the YouTube Live Embed controller via JavaScript to get a dynamic result:
+
+```
+/actions/youtubeliveembed/info/is-live
+```
+
 ### Determining the Number of Live Viewers
 
 To determine the number of viewers watching the live YouTube Video Stream, you can do:
 
 ```twig
     {% set liveViewers = craft.youtubelive.liveViewers() %}
+```
+
+You can also ping the YouTube Live Embed controller via JavaScript to get a dynamic result:
+
+```
+/actions/youtubeliveembed/info/live-viewers
 ```
 
 ## YouTube Live Embed Roadmap
