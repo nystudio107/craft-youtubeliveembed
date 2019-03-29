@@ -97,14 +97,4 @@ class YoutubeLiveEmbedVariable
     {
         return YoutubeLiveEmbed::$plugin->embed->isLive();
     }
-
-    /**
-     * Returns the number of people currently viewing the live stream
-     *
-     * @return int
-     */
-    public function liveViewers(): int
-    {
-        return YoutubeLiveEmbed::$plugin->embed->liveViewers();
-    }
 }
