@@ -136,12 +136,7 @@ class Embed extends Component
      */
     public function isLive(): bool
     {
-        $videoId = $this->getVideoIdFromLiveStream();
-        if ($videoId) {
-            return true;
-        }
-
-        return false;
+        return YoutubeLiveEmbed::getInstance()->settings->isLive;
     }
 
     // Protected Methods
@@ -157,7 +152,6 @@ class Embed extends Component
         $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
             'channel' => YoutubeLiveEmbed::$youtubeChannelId,
         ]);
-
         return $url;
     }
 
