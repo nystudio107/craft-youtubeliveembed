@@ -31,7 +31,6 @@ class Embed extends Component
 
     const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
     const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
-    const YOUTUBE_LIVE_STATS_URL = 'https://www.youtube.com/live_stats';
 
     // Public Methods
     // =========================================================================
@@ -137,29 +136,7 @@ class Embed extends Component
      */
     public function isLive(): bool
     {
-        return (bool)$this->liveViewers();
-    }
-
-    /**
-     * Returns the number of people currently viewing the live stream
-     *
-     * @return int
-     */
-    public function liveViewers(): int
-    {
-        $count = 0;
-        $videoId = $this->getVideoIdFromLiveStream();
-        if ($videoId) {
-            $liveUrl = UrlHelper::urlWithParams(self::YOUTUBE_LIVE_STATS_URL, [
-                'v' => $this->getVideoIdFromLiveStream(),
-            ]);
-            // Fetch the livestream page
-            if ($data = @file_get_contents($liveUrl)) {
-                $count = (int)$data;
-            }
-        }
-
-        return $count;
+        return YoutubeLiveEmbed::getInstance()->settings->isLive;
     }
 
     // Protected Methods
@@ -175,7 +152,6 @@ class Embed extends Component
         $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
             'channel' => YoutubeLiveEmbed::$youtubeChannelId,
         ]);
-
         return $url;
     }
 

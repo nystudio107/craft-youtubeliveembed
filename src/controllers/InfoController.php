@@ -27,7 +27,6 @@ class InfoController extends Controller
 
     protected $allowAnonymous = [
         'is-live',
-        'live-viewers',
     ];
 
     // Public Methods
@@ -42,15 +41,5 @@ class InfoController extends Controller
     public function actionIsLive(): bool
     {
         return YoutubeLiveEmbed::$plugin->embed->isLive();
-    }
-
-    /**
-     * Returns the number of people currently viewing the live stream
-     *
-     * @return int
-     */
-    public function actionLiveViewers(): int
-    {
-        return YoutubeLiveEmbed::$plugin->embed->liveViewers();
     }
 }
