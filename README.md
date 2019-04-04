@@ -30,8 +30,6 @@ You can also install Webperf via the **Plugin Store** in the Craft Control Panel
 
 YouTube Live Embed allows you to embed a YouTube live stream and/or live chat on your webpage.
 
-You can also use it to determine whether a stream is currently live, and how many people are currently viewing the live stream.
-
 Both the live stream and the live stream chat are embedded as responsive `<iframe>` elements, that you can control the aspect ratio of should you so wish.
 
 ![Screenshot](resources/screenshots/live-stream-example.png)
@@ -134,19 +132,13 @@ You can also ping the YouTube Live Embed controller via JavaScript to get a dyna
 /actions/youtubeliveembed/info/is-live
 ```
 
+This keys off of the manual **Is Live** CP setting, since YouTube [removed the live_stats](https://www.reddit.com/r/youtube/comments/atoaiv/youtube_live_stats_unavailable/) endpoint
+ 
 ### Determining the Number of Live Viewers
 
-To determine the number of viewers watching the live YouTube Video Stream, you can do:
+YouTube removed the `live_stats` endpoint, so the only way to do this now would be through the [Live Streaming API](https://developers.google.com/youtube/v3/live/docs/liveBroadcasts).
 
-```twig
-    {% set liveViewers = craft.youtubelive.liveViewers() %}
-```
-
-You can also ping the YouTube Live Embed controller via JavaScript to get a dynamic result:
-
-```
-/actions/youtubeliveembed/info/live-viewers
-```
+It's possible that future versions of the plugin will support that.
 
 ## YouTube Live Embed Roadmap
 
