@@ -44,7 +44,6 @@ class Settings extends Model
             ['youtubeChannelId', 'string'],
             ['youtubeChannelId', 'default', 'value' => ''],
             ['isLive', 'boolean'],
-            ['isLive', 'default', 'value' => false],
         ];
     }
 }
