@@ -27,6 +27,11 @@ class Settings extends Model
      */
     public $youtubeChannelId = '';
 
+    /**
+     * @var bool
+     */
+    public $isLive = false;
+
     // Public Methods
     // =========================================================================
 
@@ -38,6 +43,7 @@ class Settings extends Model
         return [
             ['youtubeChannelId', 'string'],
             ['youtubeChannelId', 'default', 'value' => ''],
+            ['isLive', 'boolean'],
         ];
     }
 }
