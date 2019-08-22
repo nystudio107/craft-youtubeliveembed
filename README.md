@@ -4,7 +4,7 @@
 
 This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
 
-![Screenshot](./resources/img/plugin-logo.png)
+![Screenshot](./docs/docs/resources/img/plugin-logo.png)
 
 ## Requirements
 
@@ -25,14 +25,6 @@ To install the plugin, follow these instructions.
 3. Install the plugin via `./craft install/plugin youtubeliveembed` via the CLI, or in the Control Panel, go to Settings → Plugins and click the “Install” button for YouTube Live Embed.
 
 You can also install YouTube Live Embed via the **Plugin Store** in the Craft Control Panel.
-
-## YouTube Live Embed Overview
-
-YouTube Live Embed allows you to embed a YouTube live stream and/or live chat on your webpage.
-
-Both the live stream and the live stream chat are embedded as responsive `<iframe>` elements, that you can control the aspect ratio of should you so wish.
-
-![Screenshot](./resources/screenshots/live-stream-example.png)
 
 ## Documentation
 
