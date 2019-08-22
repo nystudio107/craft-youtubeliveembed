@@ -15,8 +15,8 @@
         "embed"
     ],
     "support": {
-        "docs": "https://github.com/nystudio107/craft-youtubeliveembed/blob/master/README.md",
-        "issues": "https://github.com/nystudio107/craft-youtubeliveembed/issues"
+        "docs": "https://nystudio107.com/plugins/youtube-live-embed/documentation",
+        "issues": "https://nystudio107.com/plugins/youtube-live-embed/support"
     },
     "license": "MIT",
     "authors": [
