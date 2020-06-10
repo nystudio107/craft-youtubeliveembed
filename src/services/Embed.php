@@ -92,6 +92,7 @@ class Embed extends Component
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
                 'iframeUrl' => $this->getYoutubeChatUrl(),
+                'embedDomain' => $this->getSiteDomain(),
             ]
         );
 
@@ -113,6 +114,7 @@ class Embed extends Component
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
                 'iframeUrl' => $this->getYoutubeChatUrl(),
+                'embedDomain' => $this->getSiteDomain(),
             ]
         );
 
