@@ -165,15 +165,26 @@ class Embed extends Component
         $url = '';
         $videoId = $this->getVideoIdFromLiveStream();
         if ($videoId) {
-            $site = Craft::$app->getSites()->currentSite;
-            $domain = parse_url($site->baseUrl, PHP_URL_HOST);
             $url = UrlHelper::urlWithParams(self::YOUTUBE_CHAT_URL, [
                 'v' => $this->getVideoIdFromLiveStream(),
-                'embed_domain' => $domain
+                'embed_domain' => $this->getSiteDomain(),
             ]);
         }
 
         return $url;
+    }
+
+
+    /**
+     * Returns the domain of the host site
+     *
+     * @return string
+     */
+    protected function getSiteDomain()
+    {
+        $site = Craft::$app->getSites()->currentSite;
+        $domain = parse_url($site->baseUrl, PHP_URL_HOST);
+        return $domain;
     }
 
     /**
