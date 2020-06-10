@@ -110,7 +110,7 @@ If you have a Google AMP page, you can use:
 By default, the YouTube Channel ID you specify in the plugin's settings will be used, but you can also change it dynamically via:
 
 ```twig
-    {% do craft.youtubelive.channelId(CHANNEL_ID) %}
+    {% do craft.youtubelive.setChannelId(CHANNEL_ID) %}
 ```
 
 This could be useful if you had a website where you had more than one streaming channel to contend with.
