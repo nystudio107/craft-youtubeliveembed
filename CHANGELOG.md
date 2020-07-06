@@ -1,8 +1,11 @@
 # YouTube Live Embed Changelog
 
-## 1.0.3 - 2020-06-10
+## 1.0.4 - 2020-07-06
 ### Fixed
  - Fixed issue with live chat embed cross domain issues by adding `embed_domain` URL parameter to iframe src.
+ 
+ ## 1.0.3
+ - No release
 
 ## 1.0.2 - 2019-04-04
 ### Added
