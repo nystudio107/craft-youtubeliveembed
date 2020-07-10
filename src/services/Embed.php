@@ -185,8 +185,9 @@ class Embed extends Component
     protected function getSiteDomain()
     {
         $site = Craft::$app->getSites()->currentSite;
-        $domain = parse_url($site->baseUrl, PHP_URL_HOST);
-        return $domain;
+        $request = Craft::$app->getRequest();
+        $domain = parse_url($site->getBaseUrl(), PHP_URL_HOST);
+        return $domain ?? $request->getHostName();
     }
 
     /**
