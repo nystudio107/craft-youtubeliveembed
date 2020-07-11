@@ -8,7 +8,7 @@ This plugin allows you to embed a YouTube live stream and/or live chat on your w
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 3.0.0 or later and PHP 7.0+.
 
 ## Installation
 
