@@ -202,7 +202,7 @@ class Embed extends Component
         // Fetch the livestream page
         if ($data = @file_get_contents($liveUrl)) {
             // Find the video ID in there
-            if (preg_match('/\'VIDEO_ID\': \"(.*?)\"/', $data, $matches)) {
+            if (preg_match('/\'VIDEO_ID\': ?\"(.*?)\"/', $data, $matches)) {
                 $videoId = $matches[1];
             }
         }
