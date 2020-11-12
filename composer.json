@@ -2,7 +2,7 @@
     "name": "nystudio107/craft-youtubeliveembed",
     "description": "This plugin allows you to embed a YouTube live stream and/or live chat on your webpage",
     "type": "craft-plugin",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "keywords": [
         "craft",
         "cms",
