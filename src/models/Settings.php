@@ -32,6 +32,11 @@ class Settings extends Model
      */
     public $isLive = false;
 
+    /**
+     * @var string 
+     */
+    public $connectionToken = '';
+
     // Public Methods
     // =========================================================================
 
@@ -44,6 +49,7 @@ class Settings extends Model
             ['youtubeChannelId', 'string'],
             ['youtubeChannelId', 'default', 'value' => ''],
             ['isLive', 'boolean'],
+            ['connectionToken', 'string'],
         ];
     }
 }
