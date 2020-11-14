@@ -1,5 +1,17 @@
 # YouTube Live Embed Changelog
 
+### 1.0.8 - 2020-11-14
+### Added
+- Support for webhook to toggle livestream status on and off.
+
+## 1.0.7 - 2020-11-12
+### Fixed
+- Fixed additional issue with regex of livestream page to get videoId
+
+## 1.0.6 - 2020-11-12
+### Fixed
+- Fixed issue with regex of livestream page to get videoId so the chat would load properly
+
 ## 1.0.5  2020-07-12
 
 ### Fixed
