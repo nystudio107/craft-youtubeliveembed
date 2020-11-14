@@ -32,6 +32,11 @@ class Settings extends Model
      */
     public $isLive = false;
 
+    /**
+     * @var string 
+     */
+    public $connectionToken = '';
+
     // Public Methods
     // =========================================================================
 

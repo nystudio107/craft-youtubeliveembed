@@ -26,7 +26,7 @@ class StreamController extends Controller
     // =========================================================================
 
     protected $allowAnonymous = [
-        'is-live',
+        'update-stream-status',
     ];
 
     // Public Methods
@@ -38,19 +38,19 @@ class StreamController extends Controller
      *
      *
      */
-    public function actionUpdateStreamStatus()
+    public function actionUpdateStreamStatus($yttoken = '')
     {
         $streamIsLive = YoutubeLiveEmbed::$plugin->embed->isLive();
+        $myPlugin = Craft::$app->plugins->getPlugin( 'youtubeliveembed' );
 
-        if ($streamIsLive) {
-            // turn it off
-            YoutubeLiveEmbed::$plugin->setStreamStatus(false);
+        if (YoutubeLiveEmbed::$plugin->embed->isLive()) {
+            $settings = array('isLive' => false);
         }
-        elseif (!$streamIsLive) {
-            // turn it on
-            YoutubeLiveEmbed::$plugin->setStreamStatus(true);
+        else {
+            $settings = array('isLive' => true);
         }
-
-
+        if ( YoutubeLiveEmbed::$plugin->embed->getToken() == $yttoken) {
+            return Craft::$app->plugins->savePluginSettings( $myPlugin, $settings );
+        }
     }
 }
