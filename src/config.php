@@ -26,4 +26,5 @@ return [
     // YouTube Channel ID
     "youtubeChannelId" => '',
     "isLive" => false,
+    "connectionToken" => '',
 ];

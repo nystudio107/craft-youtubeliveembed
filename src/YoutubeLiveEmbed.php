@@ -11,6 +11,7 @@
 namespace nystudio107\youtubeliveembed;
 
 use nystudio107\youtubeliveembed\services\Embed as EmbedService;
+use nystudio107\youtubeliveembed\services\Stream as StreamService;
 use nystudio107\youtubeliveembed\variables\YoutubeLiveEmbedVariable;
 use nystudio107\youtubeliveembed\models\Settings;
 
@@ -30,6 +31,7 @@ use yii\base\Event;
  * @since     1.0.0
  *
  * @property  EmbedService $embed
+ * @property  StreamService $stream
  */
 class YoutubeLiveEmbed extends Plugin
 {
@@ -52,7 +54,7 @@ class YoutubeLiveEmbed extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.0.9';
 
     // Public Methods
     // =========================================================================
@@ -63,6 +65,9 @@ class YoutubeLiveEmbed extends Plugin
     public function init()
     {
         parent::init();
+        $this->setComponents([
+            'stream' => services\Stream::class,
+        ]);
         self::$plugin = $this;
         self::$youtubeChannelId = $this->getSettings()->youtubeChannelId;
 
