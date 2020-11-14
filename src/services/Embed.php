@@ -141,11 +141,6 @@ class Embed extends Component
         return YoutubeLiveEmbed::getInstance()->settings->isLive;
     }
 
-    public function getToken(): string
-    {
-        return YoutubeLiveEmbed::getInstance()->settings->connectionToken;
-    }
-
     // Protected Methods
     // =========================================================================
 

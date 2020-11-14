@@ -23,7 +23,7 @@ use craft\web\Controller;
 class StreamController extends Controller
 {
     // Protected Properties
-    // =========================================================================
+    // ===========  ==============================================================
 
     protected $allowAnonymous = [
         'update-stream-status',
@@ -36,21 +36,12 @@ class StreamController extends Controller
     /**
      * Toggles the stream to live or offline in plugin
      *
-     *
+     * @param string $yttoken
+     * @return
      */
+
     public function actionUpdateStreamStatus($yttoken = '')
     {
-        $streamIsLive = YoutubeLiveEmbed::$plugin->embed->isLive();
-        $myPlugin = Craft::$app->plugins->getPlugin( 'youtubeliveembed' );
-
-        if (YoutubeLiveEmbed::$plugin->embed->isLive()) {
-            $settings = array('isLive' => false);
-        }
-        else {
-            $settings = array('isLive' => true);
-        }
-        if ( YoutubeLiveEmbed::$plugin->embed->getToken() == $yttoken) {
-            return Craft::$app->plugins->savePluginSettings( $myPlugin, $settings );
-        }
+        return YoutubeLiveEmbed::$plugin->stream->setStreamStatus($yttoken);
     }
 }

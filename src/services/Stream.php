@@ -27,18 +27,18 @@ use craft\helpers\UrlHelper;
 class Stream extends Component
 {
 
-    function setStreamStatus($status, $token)
+    public function setStreamStatus($yttoken)
     {
-        if ($this->validateToken($token)) {
-            return YoutubeLiveEmbed::$plugin->savePluginSettings(YoutubeLiveEmbed::$plugin, array('isLive' => $status));
-        }
+        $myPlugin = Craft::$app->plugins->getPlugin('youtubeliveembed');
+        $isLive = (YoutubeLiveEmbed::$plugin->embed->isLive() ? false : true);
 
+        if ($this->getToken() == $yttoken) {
+            return Craft::$app->plugins->savePluginSettings($myPlugin, array('isLive' => $isLive));
+        }
     }
 
-    private function validateToken($token)
+    protected function getToken(): string
     {
-        if ($plugin->getSettings('connectionToken') == $token) {
-            return true;
-        }
+        return YoutubeLiveEmbed::getInstance()->settings->connectionToken;
     }
 }
