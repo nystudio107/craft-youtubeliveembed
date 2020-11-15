@@ -2,13 +2,23 @@
 
 # YouTube Live Embed plugin for Craft CMS 3.x
 
-This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
+This plugin allows you to embed a YouTube live stream and/or live chat on your webpage. You provide your YouTube account ID.
+
+## Features
+
+- Embed a livestream YouTube video in your Craft Twig template.
+- Embed a livestream live chat in your Craft Twig template.
+- Enable and disable the live status so you can hide or show code based on whether the livestream is live or not.
+- Toggle the live status using a webhook.
+
+_Due to changes in the YouTube live stats endpoint, you must enable the live status manually._
 
 ![Screenshot](./docs/docs/resources/img/plugin-logo.png)
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later and PHP 7.0+.
+- This plugin requires Craft CMS 3.0.0 or later and PHP 7.0+.
+- This plugin requires a certain type of YouTube account. [See more in the docs](https://nystudio107.com/docs/youtubeliveembed/#using-youtube-live-embed).
 
 ## Installation
 
@@ -34,6 +44,7 @@ Click here -> [YouTube Live Embed Documentation](https://nystudio107.com/plugins
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Redo the ability to trigger live mode automatically from YouTube API endpoint
+* Improve webhook functionality
 
 Brought to you by [nystudio107](https://nystudio107.com)
