@@ -34,16 +34,15 @@ class Embed extends Component
 
     // Public Methods
     // =========================================================================
-
     /**
      * Renders the responsive iframe for the live stream video
      *
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return \Twig\Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream.twig',
@@ -62,9 +61,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return \Twig\Markup
      */
-    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream-amp.twig',
@@ -83,9 +82,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return \Twig\Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat.twig',
@@ -105,9 +104,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return \Twig\Markup
      */
-    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat-amp.twig',

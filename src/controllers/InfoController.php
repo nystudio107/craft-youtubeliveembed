@@ -25,7 +25,7 @@ class InfoController extends Controller
     // Protected Properties
     // =========================================================================
 
-    protected $allowAnonymous = [
+    protected array|bool|int $allowAnonymous = [
         'is-live',
     ];
 

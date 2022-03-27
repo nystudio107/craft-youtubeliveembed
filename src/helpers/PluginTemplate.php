@@ -47,9 +47,9 @@ class PluginTemplate
      * @param $templatePath
      * @param $params
      *
-     * @return \Twig_Markup
+     * @return \Twig\Markup
      */
-    public static function renderPluginTemplate(string $templatePath, array $params = []): \Twig_Markup
+    public static function renderPluginTemplate(string $templatePath, array $params = []): \Twig\Markup
     {
         // Stash the old template mode, and set it Control Panel template mode
         $oldMode = Craft::$app->view->getTemplateMode();
