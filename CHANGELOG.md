@@ -1,5 +1,11 @@
 # YouTube Live Embed Changelog
 
+## 4.0.0-beta.1 - 2022.03.27
+
+### Added
+
+* Initial Craft CMS 4 compatibility
+
 ## 1.0.5  2020-07-12
 
 ### Fixed
