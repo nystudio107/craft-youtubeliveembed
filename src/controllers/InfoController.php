@@ -10,10 +10,8 @@
 
 namespace nystudio107\youtubeliveembed\controllers;
 
-use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
-
-use Craft;
 use craft\web\Controller;
+use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
 
 /**
  * @author    nystudio107

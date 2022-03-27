@@ -25,12 +25,12 @@ class Settings extends Model
     /**
      * @var string
      */
-    public $youtubeChannelId = '';
+    public string $youtubeChannelId = '';
 
     /**
      * @var bool
      */
-    public $isLive = false;
+    public bool $isLive = false;
 
     // Public Methods
     // =========================================================================

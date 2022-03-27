@@ -10,12 +10,12 @@
 
 namespace nystudio107\youtubeliveembed\services;
 
-use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
-use nystudio107\youtubeliveembed\helpers\PluginTemplate;
-
 use Craft;
 use craft\base\Component;
 use craft\helpers\UrlHelper;
+use nystudio107\youtubeliveembed\helpers\PluginTemplate;
+use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
+use Twig\Markup;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 
@@ -29,8 +29,8 @@ class Embed extends Component
     // Constants
     // =========================================================================
 
-    const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
-    const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
+    public const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
+    public const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
 
     // Public Methods
     // =========================================================================
@@ -40,19 +40,17 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig\Markup
+     * @return Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
-        $html = PluginTemplate::renderPluginTemplate(
+        return PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream.twig',
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
                 'iframeUrl' => $this->getYoutubeStreamUrl(),
             ]
         );
-
-        return $html;
     }
 
     /**
@@ -61,19 +59,17 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig\Markup
+     * @return Markup
      */
-    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
-        $html = PluginTemplate::renderPluginTemplate(
+        return PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream-amp.twig',
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
                 'iframeUrl' => $this->getYoutubeStreamUrl(),
             ]
         );
-
-        return $html;
     }
 
     /**
@@ -82,11 +78,11 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig\Markup
+     * @return Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
-        $html = PluginTemplate::renderPluginTemplate(
+        return PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat.twig',
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
@@ -94,8 +90,6 @@ class Embed extends Component
                 'embedDomain' => $this->getSiteDomain(),
             ]
         );
-
-        return $html;
     }
 
     /**
@@ -104,11 +98,11 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig\Markup
+     * @return Markup
      */
-    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig\Markup
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
-        $html = PluginTemplate::renderPluginTemplate(
+        return PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat-amp.twig',
             [
                 'aspectRatio' => ($aspectRatioY / $aspectRatioX) * 100,
@@ -116,8 +110,6 @@ class Embed extends Component
                 'embedDomain' => $this->getSiteDomain(),
             ]
         );
-
-        return $html;
     }
 
     /**
@@ -125,7 +117,7 @@ class Embed extends Component
      *
      * @param string $channelId
      */
-    public function setChannelId(string $channelId)
+    public function setChannelId(string $channelId): void
     {
         YoutubeLiveEmbed::$youtubeChannelId = $channelId;
     }
@@ -137,7 +129,7 @@ class Embed extends Component
      */
     public function isLive(): bool
     {
-        return YoutubeLiveEmbed::getInstance()->settings->isLive;
+        return YoutubeLiveEmbed::$plugin->getSettings()->isLive;
     }
 
     // Protected Methods
@@ -150,10 +142,9 @@ class Embed extends Component
      */
     protected function getYoutubeStreamUrl(): string
     {
-        $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
+        return UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
             'channel' => YoutubeLiveEmbed::$youtubeChannelId,
         ]);
-        return $url;
     }
 
     /**
@@ -181,29 +172,28 @@ class Embed extends Component
      *
      * @return string
      */
-    protected function getSiteDomain()
+    protected function getSiteDomain(): string
     {
         $site = Craft::$app->getSites()->currentSite;
         $request = Craft::$app->getRequest();
         $domain = parse_url($site->getBaseUrl(), PHP_URL_HOST);
+
         return $domain ?? $request->getHostName();
     }
 
     /**
      * Extracts the Video ID of the current live stream video
      *
-     * @return null|string
+     * @return ?string
      */
-    protected function getVideoIdFromLiveStream()
+    protected function getVideoIdFromLiveStream(): ?string
     {
         $videoId = null;
         $liveUrl = $this->getYoutubeStreamUrl();
         // Fetch the livestream page
-        if ($data = @file_get_contents($liveUrl)) {
-            // Find the video ID in there
-            if (preg_match('/\'VIDEO_ID\': \"(.*?)\"/', $data, $matches)) {
-                $videoId = $matches[1];
-            }
+        // Find the video ID in there
+        if (($data = @file_get_contents($liveUrl)) && preg_match('/\'VIDEO_ID\': \"(.*?)\"/', $data, $matches)) {
+            $videoId = $matches[1];
         }
 
         return $videoId;

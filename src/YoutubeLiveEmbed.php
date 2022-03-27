@@ -10,16 +10,12 @@
 
 namespace nystudio107\youtubeliveembed;
 
-use nystudio107\youtubeliveembed\services\Embed as EmbedService;
-use nystudio107\youtubeliveembed\variables\YoutubeLiveEmbedVariable;
-use nystudio107\youtubeliveembed\models\Settings;
-
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 use craft\web\twig\variables\CraftVariable;
-
+use nystudio107\youtubeliveembed\models\Settings;
+use nystudio107\youtubeliveembed\services\Embed as EmbedService;
+use nystudio107\youtubeliveembed\variables\YoutubeLiveEmbedVariable;
 use yii\base\Event;
 
 /**
@@ -37,14 +33,14 @@ class YoutubeLiveEmbed extends Plugin
     // =========================================================================
 
     /**
-     * @var YoutubeLiveEmbed
+     * @var ?YoutubeLiveEmbed
      */
-    public static $plugin;
+    public static ?YoutubeLiveEmbed $plugin = null;
 
     /**
      * @var string
      */
-    public static $youtubeChannelId;
+    public static string $youtubeChannelId = '';
 
     // Public Properties
     // =========================================================================
@@ -54,13 +50,35 @@ class YoutubeLiveEmbed extends Plugin
      */
     public string $schemaVersion = '1.0.0';
 
+    /**
+     * @var bool
+     */
+    public bool $hasCpSection = false;
+
+    /**
+     * @var bool
+     */
+    public bool $hasCpSettings = false;
+
     // Public Methods
     // =========================================================================
 
     /**
      * @inheritdoc
      */
-    public function init()
+    public function __construct($id, $parent = null, array $config = [])
+    {
+        $config['components'] = [
+            'embed' => EmbedService::class,
+        ];
+
+        parent::__construct($id, $parent, $config);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -69,7 +87,7 @@ class YoutubeLiveEmbed extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            static function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('youtubelive', YoutubeLiveEmbedVariable::class);
@@ -92,7 +110,7 @@ class YoutubeLiveEmbed extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel(): ?\craft\base\Model
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }
