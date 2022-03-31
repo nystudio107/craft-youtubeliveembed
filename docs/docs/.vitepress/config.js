@@ -14,9 +14,9 @@ module.exports = {
     docsDir: 'docs/docs',
     docsBranch: 'develop',
     algolia: {
-      appId: '',
-      apiKey: '',
-      indexName: 'youtubeliveembed'
+      appId: '9WVGU2S0Q9',
+      apiKey: 'f3e0e6146b913085e5b5f9fc8408d4a6',
+      indexName: 'nystudio107-youtubeliveembed'
     },
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
