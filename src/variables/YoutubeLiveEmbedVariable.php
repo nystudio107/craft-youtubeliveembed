@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTube Live Embed plugin for Craft CMS 3.x
+ * YouTube Live Embed plugin for Craft CMS
  *
  * This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
  *
