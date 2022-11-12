@@ -1,47 +1,48 @@
 {
-    "name": "nystudio107/craft-youtubeliveembed",
-    "description": "This plugin allows you to embed a YouTube live stream and/or live chat on your webpage",
-    "type": "craft-plugin",
-    "version": "1.0.7",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "youtube",
-        "live",
-        "stream",
-        "chat",
-        "embed"
-    ],
-    "support": {
-        "docs": "https://nystudio107.com/plugins/youtube-live-embed/documentation",
-        "issues": "https://nystudio107.com/plugins/youtube-live-embed/support"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "nystudio107",
-            "homepage": "https://nystudio107.com"
-        }
-    ],
-    "require": {
-        "craftcms/cms": "^3.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-          "nystudio107\\youtubeliveembed\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "YouTube Live Embed",
-        "handle": "youtubeliveembed",
-        "hasCpSettings": true,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-youtubeliveembed/master/CHANGELOG.md",
-        "components": {
-            "embed": "nystudio107\\youtubeliveembed\\services\\Embed"
-        },
-        "class": "nystudio107\\youtubeliveembed\\YoutubeLiveEmbed"
+  "name": "nystudio107/craft-youtubeliveembed",
+  "description": "This plugin allows you to embed a YouTube live stream and/or live chat on your webpage",
+  "type": "craft-plugin",
+  "version": "1.0.9",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "youtube",
+    "live",
+    "stream",
+    "chat",
+    "embed"
+  ],
+  "support": {
+    "docs": "https://nystudio107.com/docs/youtubeliveembed/",
+    "issues": "https://nystudio107.com/plugins/youtube-live-embed/support",
+    "source": "https://github.com/nystudio107/craft-youtubeliveembed"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "nystudio107",
+      "homepage": "https://nystudio107.com"
     }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "craftcms/plugin-installer": true,
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "nystudio107\\youtubeliveembed\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "nystudio107\\youtubeliveembed\\YoutubeLiveEmbed",
+    "handle": "youtubeliveembed",
+    "name": "YouTube Live Embed"
+  }
 }

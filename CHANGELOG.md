@@ -1,10 +1,28 @@
 # YouTube Live Embed Changelog
 
-## 1.0.5  2020-07-12
+## 1.0.9 - 2022.11.12
+### Changed
+* Added `allow-plugins` to `composer.json` to allow CI tests to work
+* Move to using `ServicesTrait` and add getter methods for services
 
 ### Fixed
-- Improved how `embed_domain` is created by making it more robust.
+* Fixed an issue where the plugins settings were not visible
 
+## 1.0.8 - 2020-11-14
+### Added
+* Support for webhook to toggle livestream status on and off.
+
+## 1.0.7 - 2020-11-12
+### Fixed
+* Fixed additional regex issue with fetching the video id from the live page
+
+## 1.0.6 - 2020-07-11
+### Fixed
+* Fixed regex issue with fetching the video id from the live page
+
+## 1.0.5 - 2020-07-12
+### Fixed
+- Improved how `embed_domain` is created by making it more robust.
 
 ## 1.0.4 - 2020-07-06
 ### Fixed

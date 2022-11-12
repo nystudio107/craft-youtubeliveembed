@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTube Live Embed plugin for Craft CMS 3.x
+ * YouTube Live Embed plugin for Craft CMS
  *
  * This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
  *
@@ -10,12 +10,11 @@
 
 namespace nystudio107\youtubeliveembed\services;
 
-use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
-use nystudio107\youtubeliveembed\helpers\PluginTemplate;
-
 use Craft;
 use craft\base\Component;
 use craft\helpers\UrlHelper;
+use nystudio107\youtubeliveembed\helpers\PluginTemplate;
+use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 
@@ -151,7 +150,7 @@ class Embed extends Component
      */
     protected function getYoutubeStreamUrl(): string
     {
-        $url =  UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
+        $url = UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
             'channel' => YoutubeLiveEmbed::$youtubeChannelId,
         ]);
         return $url;
