@@ -1,9 +1,12 @@
 # YouTube Live Embed Changelog
 
-## 1.0.5 - UNRELEASED
+## 1.0.6 - 2022.11.12
 ### Changed
 * Added `allow-plugins` to `composer.json` to allow CI tests to work
 * Move to using `ServicesTrait` and add getter methods for services
+
+### Fixed
+* Fixed an issue where the plugins settings were not visible
 
 ## 1.0.5 - 2020-07-12
 ### Fixed
