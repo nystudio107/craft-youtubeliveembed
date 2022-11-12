@@ -61,7 +61,7 @@ class YoutubeLiveEmbed extends Plugin
     /**
      * @var bool
      */
-    public $hasCpSettings = false;
+    public $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
