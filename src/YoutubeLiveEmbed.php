@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTube Live Embed plugin for Craft CMS 3.x
+ * YouTube Live Embed plugin for Craft CMS
  *
  * This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
  *
@@ -14,7 +14,7 @@ use Craft;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 use nystudio107\youtubeliveembed\models\Settings;
-use nystudio107\youtubeliveembed\services\Embed as EmbedService;
+use nystudio107\youtubeliveembed\services\ServicesTrait;
 use nystudio107\youtubeliveembed\variables\YoutubeLiveEmbedVariable;
 use yii\base\Event;
 
@@ -24,11 +24,14 @@ use yii\base\Event;
  * @author    nystudio107
  * @package   YoutubeLiveEmbed
  * @since     1.0.0
- *
- * @property  EmbedService $embed
  */
 class YoutubeLiveEmbed extends Plugin
 {
+    // Traits
+    // =========================================================================
+
+    use ServicesTrait;
+
     // Static Properties
     // =========================================================================
 
@@ -58,22 +61,10 @@ class YoutubeLiveEmbed extends Plugin
     /**
      * @var bool
      */
-    public bool $hasCpSettings = false;
+    public bool $hasCpSettings = true;
 
     // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function __construct($id, $parent = null, array $config = [])
-    {
-        $config['components'] = [
-            'embed' => EmbedService::class,
-        ];
-
-        parent::__construct($id, $parent, $config);
-    }
 
     /**
      * @inheritdoc

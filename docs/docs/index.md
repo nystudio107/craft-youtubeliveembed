@@ -1,6 +1,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-youtubeliveembed/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
 
-# YouTube Live Embed plugin for Craft CMS 3.x
+# YouTube Live Embed plugin for Craft CMS
 
 This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
 
@@ -8,7 +8,7 @@ This plugin allows you to embed a YouTube live stream and/or live chat on your w
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 3.0.0 or later, or Craft CMS 4.0.0 or later.
 
 ## Installation
 
@@ -133,7 +133,7 @@ You can also ping the YouTube Live Embed controller via JavaScript to get a dyna
 ```
 
 This keys off of the manual **Is Live** CP setting, since YouTube [removed the live_stats](https://www.reddit.com/r/youtube/comments/atoaiv/youtube_live_stats_unavailable/) endpoint
- 
+
 ### Determining the Number of Live Viewers
 
 YouTube removed the `live_stats` endpoint, so the only way to do this now would be through the [Live Streaming API](https://developers.google.com/youtube/v3/live/docs/liveBroadcasts).

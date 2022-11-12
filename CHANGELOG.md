@@ -1,5 +1,16 @@
 # YouTube Live Embed Changelog
 
+## 4.0.0 - 2022.11.12
+### Added
+* Initial Craft CMS 4 release
+
+### Changed
+* Added `allow-plugins` to `composer.json` to allow CI tests to work
+* Move to using `ServicesTrait` and add getter methods for services
+
+### Fixed
+* Fixed an issue where the plugins settings were not visible
+
 ## 4.0.0-beta.1 - 2022.03.27
 
 ### Added
