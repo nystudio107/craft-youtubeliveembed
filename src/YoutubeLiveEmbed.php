@@ -51,7 +51,7 @@ class YoutubeLiveEmbed extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.0.10';
 
     /**
      * @var bool
