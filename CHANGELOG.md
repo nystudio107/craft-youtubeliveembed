@@ -1,5 +1,9 @@
 # YouTube Live Embed Changelog
 
+## 1.0.10 - 2023.01.11
+### Changed
+* Matched version numbers between plugin class file and composer.json
+
 ## 1.0.9 - 2022.11.12
 ### Changed
 * Added `allow-plugins` to `composer.json` to allow CI tests to work
