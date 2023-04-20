@@ -1,5 +1,13 @@
 # YouTube Live Embed Changelog
 
+## 1.0.11 - 2023.04.19
+### Changed
+* Updated the docs to use VitePress `^1.0.0-alpha.29`
+* Allow for versioning of the docs
+
+### Fixed
+* Updated regex for finding video id in livestream url source ([#39](https://github.com/nystudio107/craft-youtubeliveembed/pull/39))
+
 ## 1.0.10 - 2023.01.11
 ### Changed
 * Matched version numbers between plugin class file and composer.json
