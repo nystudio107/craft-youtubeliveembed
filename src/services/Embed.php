@@ -192,7 +192,7 @@ class Embed extends Component
         $liveUrl = $this->getYoutubeStreamUrl();
         // Fetch the livestream page
         // Find the video ID in there
-        if (($data = @file_get_contents($liveUrl)) && preg_match('/\'VIDEO_ID\': \"(.*?)\"/', $data, $matches)) {
+        if (($data = @file_get_contents($liveUrl)) && preg_match('/\"VIDEO_ID\":\"(.*?)\"/', $data, $matches)) {
             $videoId = $matches[1];
         }
 
