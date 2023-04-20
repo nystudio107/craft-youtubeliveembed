@@ -1,5 +1,13 @@
 # YouTube Live Embed Changelog
 
+## 4.0.1 - 2023.04.19
+### Changed
+* Updated the docs to use VitePress `^1.0.0-alpha.29`
+* Allow for versioning of the docs
+
+### Fixed
+* Updated regex for finding video id in livestream url source ([#38](https://github.com/nystudio107/craft-youtubeliveembed/pull/38))
+
 ## 4.0.0 - 2022.11.12
 ### Added
 * Initial Craft CMS 4 release
