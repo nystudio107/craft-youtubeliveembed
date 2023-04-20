@@ -1,6 +1,10 @@
 # YouTube Live Embed Changelog
 
 ## 1.0.11 - UNRELEASED
+### Changed
+* Updated the docs to use VitePress `^1.0.0-alpha.29`
+* Allow for versioning of the docs
+
 ### Fixed
 * Updated regex for finding video id in livestream url source ([#39](https://github.com/nystudio107/craft-youtubeliveembed/pull/39))
 
