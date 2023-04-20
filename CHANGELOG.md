@@ -1,6 +1,6 @@
 # YouTube Live Embed Changelog
 
-## 1.0.11 - UNRELEASED
+## 1.0.11 - 2023.04.19
 ### Changed
 * Updated the docs to use VitePress `^1.0.0-alpha.29`
 * Allow for versioning of the docs
