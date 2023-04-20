@@ -34,9 +34,9 @@ export default defineConfig({
       {text: 'Changelog', link: 'https://nystudio107.com/plugins/youtube-live-embed/changelog'},
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-youtubeliveembed/issues'},
       {
-        text: 'v3', items: [
-          {text: 'v4', link: 'https://nystudio107.com/docs/youtubeliveembed/'},
-          {text: 'v3', link: '/'},
+        text: 'v4', items: [
+          {text: 'v4', link: '/'},
+          {text: 'v3', link: 'https://nystudio107.com/docs/youtubeliveembed/v3/'},
         ],
       },
     ]
