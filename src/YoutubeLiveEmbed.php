@@ -73,7 +73,9 @@ class YoutubeLiveEmbed extends Plugin
     {
         parent::init();
         self::$plugin = $this;
-        self::$youtubeChannelId = $this->getSettings()->youtubeChannelId;
+        /** @var Settings $settings */
+        $settings = $this->getSettings();
+        self::$youtubeChannelId = $settings->youtubeChannelId;
 
         Event::on(
             CraftVariable::class,
