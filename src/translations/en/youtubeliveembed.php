@@ -18,5 +18,5 @@ return [
     'YouTube Channel ID' => 'YouTube Channel ID',
     'Error rendering template string -> {error}' => 'Error rendering template string -> {error}',
     'Error rendering `{template}` -> {error}' => 'Error rendering `{template}` -> {error}',
-    'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).' => 'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).'
+    'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).' => 'Enter your YouTube channel ID here. If you do not know it, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).',
 ];

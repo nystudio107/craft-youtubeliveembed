@@ -78,7 +78,7 @@ class YoutubeLiveEmbed extends Plugin
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            static function (Event $event) {
+            static function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('youtubelive', YoutubeLiveEmbedVariable::class);
@@ -114,7 +114,7 @@ class YoutubeLiveEmbed extends Plugin
         return Craft::$app->view->renderTemplate(
             'youtubeliveembed/settings',
             [
-                'settings' => $this->getSettings()
+                'settings' => $this->getSettings(),
             ]
         );
     }
