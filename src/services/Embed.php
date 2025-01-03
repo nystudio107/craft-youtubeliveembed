@@ -14,7 +14,9 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\UrlHelper;
 use nystudio107\youtubeliveembed\helpers\PluginTemplate;
+use nystudio107\youtubeliveembed\models\Settings;
 use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
+use Twig\Markup;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 
@@ -40,9 +42,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream.twig',
@@ -61,9 +63,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-stream-amp.twig',
@@ -82,9 +84,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat.twig',
@@ -104,9 +106,9 @@ class Embed extends Component
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         $html = PluginTemplate::renderPluginTemplate(
             'embeds/youtube-live-chat-amp.twig',
@@ -137,7 +139,9 @@ class Embed extends Component
      */
     public function isLive(): bool
     {
-        return YoutubeLiveEmbed::getInstance()->settings->isLive;
+        /** @var Settings $settings */
+        $settings = YoutubeLiveEmbed::$plugin->getSettings();
+        return $settings->isLive;
     }
 
     // Protected Methods

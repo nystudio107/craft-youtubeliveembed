@@ -11,6 +11,7 @@
 namespace nystudio107\youtubeliveembed\variables;
 
 use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
+use Twig\Markup;
 
 /**
  * @author    nystudio107
@@ -28,9 +29,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStream(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedStream($aspectRatioX, $aspectRatioY);
     }
@@ -41,9 +42,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedStreamAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedStreamAmp($aspectRatioX, $aspectRatioY);
     }
@@ -54,9 +55,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChat(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedChat($aspectRatioX, $aspectRatioY);
     }
@@ -67,9 +68,9 @@ class YoutubeLiveEmbedVariable
      * @param int $aspectRatioX
      * @param int $aspectRatioY
      *
-     * @return \Twig_Markup
+     * @return Markup
      */
-    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): \Twig_Markup
+    public function embedChatAmp(int $aspectRatioX = 16, int $aspectRatioY = 9): Markup
     {
         return YoutubeLiveEmbed::$plugin->embed->embedChatAmp($aspectRatioX, $aspectRatioY);
     }
