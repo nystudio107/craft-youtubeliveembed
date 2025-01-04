@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
   title: 'YouTube Live Embed Plugin',
   description: 'Documentation for the YouTube Live Embed plugin',
-  base: '/docs/youtubeliveembed/',
+  base: '/docs/youtubeliveembed/v4/',
   lang: 'en-US',
   head: [
     ['meta', {content: 'https://github.com/nystudio107', property: 'og:see_also',}],
@@ -24,7 +24,10 @@ export default defineConfig({
     algolia: {
       appId: '9WVGU2S0Q9',
       apiKey: 'f3e0e6146b913085e5b5f9fc8408d4a6',
-      indexName: 'nystudio107-youtubeliveembed'
+      indexName: 'nystudio107-youtubeliveembed',
+      searchParameters: {
+        facetFilters: ["version:v4"],
+      },
     },
     lastUpdatedText: 'Last Updated',
     sidebar: [],
@@ -35,8 +38,9 @@ export default defineConfig({
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-youtubeliveembed/issues'},
       {
         text: 'v4', items: [
+          {text: 'v5', link: 'https://nystudio107.com/docs/youtubeliveembed/'},
           {text: 'v4', link: '/'},
-          {text: 'v3', link: 'https://nystudio107.com/docs/youtubeliveembed/v3/'},
+          {text: 'v1', link: 'https://nystudio107.com/docs/youtubeliveembed/v1/'},
         ],
       },
     ]
