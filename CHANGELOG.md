@@ -1,5 +1,10 @@
 # YouTube Live Embed Changelog
 
+## 1.0.12 - 2025.01.04
+### Added
+* Add `phpstan` and `ecs` code linting
+* Add `code-analysis.yaml` GitHub action
+
 ## 1.0.11 - 2023.04.19
 ### Changed
 * Updated the docs to use VitePress `^1.0.0-alpha.29`

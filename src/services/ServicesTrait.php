@@ -36,7 +36,7 @@ trait ServicesTrait
         $config = ArrayHelper::merge([
             'components' => [
                 'embed' => EmbedService::class,
-            ]
+            ],
         ], $config);
 
         parent::__construct($id, $parent, $config);

@@ -2,7 +2,7 @@
 
 # YouTube Live Embed plugin for Craft CMS
 
-This plugin allows you to embed a YouTube live stream and/or live chat on your webpage
+This plugin allows you to embed a YouTube live stream and/or live chat on your web page
 
 ![Screenshot](./resources/img/plugin-logo.png)
 
@@ -28,7 +28,7 @@ You can also install YouTube Live Embed via the **Plugin Store** in the Craft Co
 
 ## YouTube Live Embed Overview
 
-YouTube Live Embed allows you to embed a YouTube live stream and/or live chat on your webpage.
+YouTube Live Embed allows you to embed a YouTube live stream and/or live chat on your web page.
 
 Both the live stream and the live stream chat are embedded as responsive `<iframe>` elements, that you can control the aspect ratio of should you so wish.
 
@@ -44,14 +44,14 @@ You can also override this setting in the `config.php` or at runtime via Twig, s
 
 You can see an example of YouTube Live Embed being used live on at [nystudio107.com/live](https://nystudio107.com/live).
 
-In order to embed a YouTube Live Stream on a website, you need:
+To embed a YouTube Live Stream on a website, you need:
 1. Live Streaming is enabled
 2. Embedding of Live Streaming is enabled
 3. Monetization is enabled
 
 You can find these on the [YouTube Features](https://www.youtube.com/features) page, and read more about it in the [Enable embedded live streams from YouTube](http://docs.crowdcast.io/other/enable-embedded-live-streams-from-youtube)
 
-If you haven't satisfied the above requirements, when someone goes to play your live stream embedded on your website, they will see this message (you can test it with an Incognito browser):
+If you haven’t satisfied the above requirements, when someone goes to play your live stream embedded on your website, they will see this message (you can test it with an Incognito browser):
 
 ```
 Video unavailable
@@ -59,7 +59,7 @@ Watch this video on YouTube.
 Playback on other websites has been disabled by the video owner.
 ```
 
-N.B. That in order to enable Monetization, you must have a linked AdSense account. Just enabling monetization is enough, and ads must be enabled, but they will not appear in your videos unless you specifically enable them.
+N.B. That to enable Monetization, you must have a linked AdSense account. Just enabling monetization is enough, and ads must be enabled, but they will not appear in your videos unless you specifically enable them.
 
 ### Embedding a Live Stream Video
 
@@ -107,13 +107,13 @@ If you have a Google AMP page, you can use:
 
 ### Changing the Channel ID
 
-By default, the YouTube Channel ID you specify in the plugin's settings will be used, but you can also change it dynamically via:
+By default, the YouTube Channel ID you specify in the plugin’s settings will be used, but you can also change it dynamically via:
 
 ```twig
     {% do craft.youtubelive.setChannelId(CHANNEL_ID) %}
 ```
 
-This could be useful if you had a website where you had more than one streaming channel to contend with.
+This could be useful if you had a site where you had more than one streaming channel to contend with.
 
 If you do not know your YouTube Channel ID, [here is how to find it](https://support.google.com/youtube/answer/3250431?hl=en).
 
@@ -138,6 +138,6 @@ This keys off of the manual **Is Live** CP setting, since YouTube [removed the l
 
 YouTube removed the `live_stats` endpoint, so the only way to do this now would be through the [Live Streaming API](https://developers.google.com/youtube/v3/live/docs/liveBroadcasts).
 
-It's possible that future versions of the plugin will support that.
+It’s possible that future versions of the plugin will support that.
 
 Brought to you by [nystudio107](https://nystudio107.com)
