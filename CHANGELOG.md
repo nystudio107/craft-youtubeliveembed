@@ -1,6 +1,6 @@
 # YouTube Live Embed Changelog
 
-## 1.0.12 - UNRELEASED
+## 1.0.12 - 2025.01.04
 ### Added
 * Add `phpstan` and `ecs` code linting
 * Add `code-analysis.yaml` GitHub action
