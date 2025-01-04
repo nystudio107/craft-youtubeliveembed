@@ -24,7 +24,10 @@ export default defineConfig({
     algolia: {
       appId: '9WVGU2S0Q9',
       apiKey: 'f3e0e6146b913085e5b5f9fc8408d4a6',
-      indexName: 'nystudio107-youtubeliveembed'
+      indexName: 'nystudio107-youtubeliveembed',
+      searchParameters: {
+        facetFilters: ["version:v3"],
+      },
     },
     lastUpdatedText: 'Last Updated',
     sidebar: [],
@@ -35,7 +38,8 @@ export default defineConfig({
       {text: 'Issues', link: 'https://github.com/nystudio107/craft-youtubeliveembed/issues'},
       {
         text: 'v3', items: [
-          {text: 'v4', link: 'https://nystudio107.com/docs/youtubeliveembed/'},
+          {text: 'v5', link: 'https://nystudio107.com/docs/youtubeliveembed/'},
+          {text: 'v4', link: 'https://nystudio107.com/docs/youtubeliveembed/v4/'},
           {text: 'v3', link: '/'},
         ],
       },
