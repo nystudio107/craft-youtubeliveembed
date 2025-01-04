@@ -1,6 +1,6 @@
 name: Build and Deploy Docs
 env:
-  DOCS_DEST_DIR: /youtubeliveembed/v3/
+  DOCS_DEST_DIR: /youtubeliveembed/v1/
 on:
   push:
     branches:
