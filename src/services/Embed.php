@@ -14,6 +14,7 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\UrlHelper;
 use nystudio107\youtubeliveembed\helpers\PluginTemplate;
+use nystudio107\youtubeliveembed\models\Settings;
 use nystudio107\youtubeliveembed\YoutubeLiveEmbed;
 use Twig\Markup;
 
@@ -129,7 +130,9 @@ class Embed extends Component
      */
     public function isLive(): bool
     {
-        return YoutubeLiveEmbed::$plugin->getSettings()->isLive;
+        /** @var Settings $settings */
+        $settings = YoutubeLiveEmbed::$plugin->getSettings();
+        return $settings->isLive;
     }
 
     // Protected Methods
