@@ -32,6 +32,7 @@ class Embed extends Component
 
     public const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
     public const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
+    public const YOUTUBE_CHANNEL_URL='https://www.youtube.com/channel';
 
     // Public Methods
     // =========================================================================
@@ -139,6 +140,16 @@ class Embed extends Component
     // =========================================================================
 
     /**
+     * Returns the URL to the channel's live page (used to extract video ID)
+     *
+     * @return string
+     */
+    protected function getYoutubeChannelLiveUrl(): string
+    {
+        return self::YOUTUBE_CHANNEL_URL . '/' . YoutubeLiveEmbed::$youtubeChannelId . '/live';
+    }
+
+    /**
      * Returns the URL to the live video YouTube page
      *
      * @return string
@@ -192,10 +203,10 @@ class Embed extends Component
     protected function getVideoIdFromLiveStream(): ?string
     {
         $videoId = null;
-        $liveUrl = $this->getYoutubeStreamUrl();
+        $liveUrl = $this->getYoutubeChannelLiveUrl();
         // Fetch the livestream page
         // Find the video ID in there
-        if (($data = @file_get_contents($liveUrl)) && preg_match('/\"VIDEO_ID\":\"(.*?)\"/', $data, $matches)) {
+        if (($data = @file_get_contents($liveUrl)) && preg_match('/\"videoId\":\"(.*?)\"/', $data, $matches)) {
             $videoId = $matches[1];
         }
 
