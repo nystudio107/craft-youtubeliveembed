@@ -30,9 +30,18 @@ class Embed extends Component
     // Constants
     // =========================================================================
 
-    public const YOUTUBE_STREAM_URL = 'https://www.youtube.com/embed/live_stream';
+    public const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed';
     public const YOUTUBE_CHAT_URL = 'https://www.youtube.com/live_chat';
     public const YOUTUBE_CHANNEL_URL='https://www.youtube.com/channel';
+
+    // Properties
+    // =========================================================================
+
+    /**
+     * Cached video ID for the current livestream (avoids multiple YouTube fetches per request)
+     */
+    private ?string $_videoId = null;
+    private bool $_videoIdFetched = false;
 
     // Public Methods
     // =========================================================================
@@ -121,7 +130,11 @@ class Embed extends Component
      */
     public function setChannelId(string $channelId): void
     {
-        YoutubeLiveEmbed::$youtubeChannelId = $channelId;
+        if (YoutubeLiveEmbed::$youtubeChannelId !== $channelId) {
+            YoutubeLiveEmbed::$youtubeChannelId = $channelId;
+            $this->_videoId = null;
+            $this->_videoIdFetched = false;
+        }
     }
 
     /**
@@ -156,9 +169,12 @@ class Embed extends Component
      */
     protected function getYoutubeStreamUrl(): string
     {
-        return UrlHelper::urlWithParams(self::YOUTUBE_STREAM_URL, [
-            'channel' => YoutubeLiveEmbed::$youtubeChannelId,
-        ]);
+        $videoId = $this->getCachedVideoId();
+        if ($videoId) {
+            return self::YOUTUBE_EMBED_URL . '/' . $videoId;
+        }
+
+        return '';
     }
 
     /**
@@ -169,15 +185,33 @@ class Embed extends Component
     protected function getYoutubeChatUrl(): string
     {
         $url = '';
-        $videoId = $this->getVideoIdFromLiveStream();
+        $videoId = $this->getCachedVideoId();
         if ($videoId) {
             $url = UrlHelper::urlWithParams(self::YOUTUBE_CHAT_URL, [
-                'v' => $this->getVideoIdFromLiveStream(),
+                'v' => $videoId,
                 'embed_domain' => $this->getSiteDomain(),
             ]);
         }
 
         return $url;
+    }
+
+    /**
+     * Returns the cached video ID, using Craft's cache to avoid fetching from YouTube on every request
+     *
+     * @return ?string
+     */
+    protected function getCachedVideoId(): ?string
+    {
+        if (!$this->_videoIdFetched) {
+            $cacheKey = 'youtubelive_videoid_' . YoutubeLiveEmbed::$youtubeChannelId;
+            $this->_videoId = Craft::$app->getCache()->getOrSet($cacheKey, function() {
+                return $this->getVideoIdFromLiveStream();
+            }, 120);
+            $this->_videoIdFetched = true;
+        }
+
+        return $this->_videoId;
     }
 
 
@@ -202,14 +236,54 @@ class Embed extends Component
      */
     protected function getVideoIdFromLiveStream(): ?string
     {
-        $videoId = null;
         $liveUrl = $this->getYoutubeChannelLiveUrl();
-        // Fetch the livestream page
-        // Find the video ID in there
-        if (($data = @file_get_contents($liveUrl)) && preg_match('/\"videoId\":\"(.*?)\"/', $data, $matches)) {
-            $videoId = $matches[1];
+
+        // Use a browser User-Agent and timeout to avoid YouTube returning bot-restricted content
+        $context = stream_context_create([
+            'http' => [
+                'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\r\n",
+                'timeout' => 5,
+            ],
+        ]);
+        $data = @file_get_contents($liveUrl, false, $context);
+
+        if (!$data) {
+            Craft::warning("Failed to fetch YouTube live page: {$liveUrl}", __METHOD__);
+            return null;
         }
 
-        return $videoId;
+        if (preg_match('/<link\s+rel="canonical"\s+href="https:\/\/www\.youtube\.com\/watch\?v=([^"&]+)"/i', $data, $matches)
+            && $this->isValidVideoId($matches[1])) {
+            return $matches[1];
+        }
+
+        if (preg_match('/var\s+ytInitialPlayerResponse\s*=\s*(\{.*?\});\s*var\s+\w+\s*=/s', $data, $matches)) {
+            $playerResponse = json_decode($matches[1], true);
+            $videoId = $playerResponse['videoDetails']['videoId'] ?? null;
+            if ($videoId && $this->isValidVideoId($videoId)) {
+                return $videoId;
+            }
+        }
+
+        if (preg_match('/var\s+ytInitialData\s*=\s*(\{.*?\});\s*<\/script>/s', $data, $matches)) {
+            $initialData = json_decode($matches[1], true);
+            $videoId = $initialData['currentVideoEndpoint']['watchEndpoint']['videoId'] ?? null;
+            if ($videoId && $this->isValidVideoId($videoId)) {
+                return $videoId;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Validates that a string is a valid YouTube video ID (11 alphanumeric/dash/underscore characters)
+     *
+     * @param string $videoId
+     * @return bool
+     */
+    private function isValidVideoId(string $videoId): bool
+    {
+        return (bool) preg_match('/^[a-zA-Z0-9_-]{11}$/', $videoId);
     }
 }
